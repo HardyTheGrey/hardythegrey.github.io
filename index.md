@@ -6,6 +6,7 @@ title: "Home"
 # Welcome!
 ## Latest Weekly RaceRoom Leaderboard Overview
 
-![Latest Leaderboard Cards](/assets/cards.png)
+## Latest Leaderboard Overview
+![](/assets/cards.png)
 ``
 ``
