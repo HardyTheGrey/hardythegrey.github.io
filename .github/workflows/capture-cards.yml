@@ -2,8 +2,8 @@ name: Capture R3E Daily Cards
 
 on:
   schedule:
-    - cron: "0 0 */2 * *"  # Every 2 days at 00:00 UTC
-  workflow_dispatch:        # Manual run option
+    - cron: "0 0 */2 * *"
+  workflow_dispatch:
 
 jobs:
   screenshot:
@@ -18,10 +18,16 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Puppeteer
-        run: npm install puppeteer
+      - name: Install dependencies
+        run: |
+          npm install puppeteer-core
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
 
       - name: Run screenshot script
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: node scripts/capture-cards.js
 
       - name: Commit and push if changed
