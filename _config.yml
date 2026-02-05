@@ -1,0 +1,21 @@
+title: "My Website"
+description: "A simple website powered by Jekyll and GitHub Pages."
+author: "Your Name"
+
+# Use one of GitHub Pages–supported themes (minimal is a good start)
+theme: minima
+
+# --- GitHub Pages URL settings ---
+# Replace 'yourusername' with your actual GitHub username
+url: "https://yourusername.github.io"
+baseurl: ""   # Empty for personal site repos (yourusername.github.io)
+
+# --- Optional settings ---
+markdown: kramdown
+highlighter: rouge
+
+# Exclude files or folders from the final website build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
