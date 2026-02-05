@@ -4,5 +4,8 @@ title: "Home"
 ---
 
 # Welcome!
-This is my new Jekyll site hosted on GitHub Pages.
+## Latest Weekly RaceRoom Leaderboard Overview
+
+![Latest Leaderboard Cards](/assets/cards.png)
+``
 ``
