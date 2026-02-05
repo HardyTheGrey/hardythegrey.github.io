@@ -5,16 +5,19 @@ const puppeteer = require("puppeteer");
 
   const browser = await puppeteer.launch({
     headless: "new",
-    defaultViewport: { width: 1600, height: 2000 }
+    defaultViewport: { width: 1920, height: 1080 }
   });
 
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: "networkidle2" });
 
-  await page.waitForSelector("#results-container > div > div.daily-races-grid");
-  const cardSection = await page.$("#results-container > div > div.daily-races-grid");
+  // Wait for the 6-card container
+  const selector = "#results-container > div > div.daily-races-grid";
+  await page.waitForSelector(selector, { timeout: 20000 });
 
-  await cardSection.screenshot({
+  // Get the element and screenshot it
+  const element = await page.$(selector);
+  await element.screenshot({
     path: "assets/cards.png",
     type: "png"
   });
