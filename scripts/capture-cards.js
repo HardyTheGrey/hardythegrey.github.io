@@ -11,11 +11,8 @@ const puppeteer = require("puppeteer");
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: "networkidle2" });
 
-  // WAIT for card container to appear
-  await page.waitForSelector(".cards-section");
-
-  // SELECT the exact card element (you may adjust selector)
-  const cardSection = await page.$(".cards-section");
+  await page.waitForSelector("#results-container > div > div.daily-races-grid");
+  const cardSection = await page.$("#results-container > div > div.daily-races-grid");
 
   await cardSection.screenshot({
     path: "assets/cards.png",
