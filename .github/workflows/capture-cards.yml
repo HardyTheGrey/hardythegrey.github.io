@@ -1,9 +1,9 @@
-name: Capture R3E Cards
+name: Capture R3E Daily Cards
 
 on:
   schedule:
-    - cron: "0 0 */2 * *"   # every 2 days at midnight UTC
-  workflow_dispatch:        # allow manual run
+    - cron: "0 0 */2 * *"  # Every 2 days at 00:00 UTC
+  workflow_dispatch:        # Manual run option
 
 jobs:
   screenshot:
@@ -24,12 +24,12 @@ jobs:
       - name: Run screenshot script
         run: node scripts/capture-cards.js
 
-      - name: Commit and push result
+      - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add assets/cards.png
           if ! git diff --cached --quiet; then
-            git commit -m "Auto-update cards screenshot"
+            git commit -m "Updated cards screenshot automatically"
             git push
           fi
