@@ -1,0 +1,35 @@
+name: Capture R3E Cards
+
+on:
+  schedule:
+    - cron: "0 0 */2 * *"   # every 2 days at midnight UTC
+  workflow_dispatch:        # allow manual run
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install Puppeteer
+        run: npm install puppeteer
+
+      - name: Run screenshot script
+        run: node scripts/capture-cards.js
+
+      - name: Commit and push result
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add assets/cards.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-update cards screenshot"
+            git push
+          fi
