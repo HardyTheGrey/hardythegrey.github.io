@@ -7,7 +7,7 @@ theme: minima
 
 # --- GitHub Pages URL settings ---
 # Replace 'yourusername' with your actual GitHub username
-url: "https://yourusername.github.io"
+url: "https://hardythegrey.github.io"
 baseurl: ""   # Empty for personal site repos (yourusername.github.io)
 
 # --- Optional settings ---
